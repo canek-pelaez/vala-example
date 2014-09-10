@@ -24,5 +24,26 @@ namespace Example {
 
             window.present ();
         }
+
+        private void preferences () {
+        }
+
+        public override void startup () {
+            base.startup ();
+
+            var action = new GLib.SimpleAction ("preferences", null);
+            action.activate.connect (() => preferences ());
+            add_action (action);
+
+            action = new GLib.SimpleAction ("quit", null);
+            action.activate.connect (() => quit ());
+            add_action (action);
+            add_accelerator ("<Ctrl>Q", "app.quit", null);
+
+            var builder = new Gtk.Builder.from_resource ("/org/gtk/exampleapp/app-menu.ui");
+            var app_menu = builder.get_object ("appmenu") as GLib.MenuModel;
+
+            set_app_menu (app_menu);
+        }
     }
 }
