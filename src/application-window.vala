@@ -6,12 +6,21 @@ namespace Example {
         [GtkChild]
         private Gtk.Stack stack;
 
+        private GLib.Settings settings;
+
         public ApplicationWindow (Gtk.Application application) {
             GLib.Object (application: application);
+
+            settings = new GLib.Settings ("org.gtk.exampleapp");
+
+            settings.bind ("transition", stack, "transition-type",
+                           GLib.SettingsBindFlags.DEFAULT);
         }
 
         public void open (GLib.File file) {
             var basename = file.get_basename ();
+            var font_name = settings.get_string ("font");
+            var font = Pango.FontDescription.from_string (font_name);
 
             var scrolled = new Gtk.ScrolledWindow (null, null);
             scrolled.show ();
@@ -21,6 +30,7 @@ namespace Example {
             var view = new Gtk.TextView ();
             view.editable = false;
             view.cursor_visible = false;
+            view.override_font (font);
             view.show ();
 
             scrolled.add (view);
