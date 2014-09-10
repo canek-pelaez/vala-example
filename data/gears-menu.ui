@@ -7,6 +7,10 @@
         <attribute name="label" translatable="yes">_Words</attribute>
         <attribute name="action">win.show-words</attribute>
       </item>
+      <item>
+        <attribute name="label" translatable="yes">_Lines</attribute>
+        <attribute name="action">win.show-lines</attribute>
+      </item>
     </section>
   </menu>
 </interface>
