@@ -4,6 +4,7 @@ bin_PROGRAMS = src/exampleapp
 
 src_exampleapp_SOURCES =			\
 	src/application.vala			\
+	src/application-preferences.vala	\
 	src/application-window.vala		\
 	src/main.vala				\
 	src/resources.c				\
@@ -27,6 +28,7 @@ src_exampleapp_LDADD =				\
 gresource_file = $(top_srcdir)/data/exampleapp.gresource.xml
 resource_files = 				\
 	$(top_srcdir)/data/app-menu.ui		\
+	$(top_srcdir)/data/prefs.ui		\
 	$(top_srcdir)/data/window.ui		\
 	$(NULL)
 
@@ -35,6 +37,17 @@ src/resources.c: $(gresource_file) $(resource_files)
 		--target=$@			\
 		--sourcedir=$(top_srcdir)/data	\
 		--generate-source $<
+
+schema_file = $(top_srcdir)/data/org.gtk.exampleapp.gschema.xml
+
+gsettings_SCHEMAS =				\
+	$(schema_file)				\
+	$(NULL)
+
+@GSETTINGS_RULES@
+
+data/gschemas.compiled: $(schema_file)
+	$(GLIB_COMPILE_SCHEMAS) $(top_srcdir)/data
 
 data_desktopdir = $(datadir)/applications
 data_desktop_DATA = data/exampleapp.desktop
