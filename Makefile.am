@@ -26,6 +26,7 @@ src_exampleapp_LDADD =				\
 
 gresource_file = $(top_srcdir)/data/exampleapp.gresource.xml
 resource_files = 				\
+	$(top_srcdir)/data/app-menu.ui		\
 	$(top_srcdir)/data/window.ui		\
 	$(NULL)
 
