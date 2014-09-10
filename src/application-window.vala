@@ -5,6 +5,12 @@ namespace Example {
 
         [GtkChild]
         private Gtk.Stack stack;
+        [GtkChild]
+        private Gtk.ToggleButton search;
+        [GtkChild]
+        private Gtk.SearchBar searchbar;
+        [GtkChild]
+        private Gtk.SearchEntry searchentry;
 
         private GLib.Settings settings;
 
@@ -15,6 +21,9 @@ namespace Example {
 
             settings.bind ("transition", stack, "transition-type",
                            GLib.SettingsBindFlags.DEFAULT);
+
+            search.bind_property ("active", searchbar, "search-mode-enabled",
+                                  GLib.BindingFlags.BIDIRECTIONAL);
         }
 
         public void open (GLib.File file) {
@@ -45,6 +54,33 @@ namespace Example {
             } catch (GLib.Error e) {
                 GLib.warning ("There was an error loading '%s': %s",
                               basename, e.message);
+            }
+
+            search.sensitive = true;
+        }
+
+        [GtkCallback]
+        public void visible_child_changed () {
+        }
+
+        [GtkCallback]
+        public void search_text_changed () {
+            var text = searchentry.get_text ();
+
+            if (text == "")
+                return;
+
+            var tab = stack.get_visible_child () as Gtk.Bin;
+            var view = tab.get_child () as Gtk.TextView;
+            var buffer = view.get_buffer ();
+
+            /* Very simple-minded search implementation */
+            Gtk.TextIter start, match_start, match_end;
+            buffer.get_start_iter (out start);
+            if (start.forward_search (text, Gtk.TextSearchFlags.CASE_INSENSITIVE,
+                                      out match_start, out match_end, null)) {
+                buffer.select_range (match_start, match_end);
+                view.scroll_to_iter (match_start, 0.0, false, 0.0, 0.0);
             }
         }
     }
