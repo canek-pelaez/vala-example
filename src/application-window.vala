@@ -34,6 +34,8 @@ namespace Example {
             settings.bind ("show-words", sidebar, "reveal-child",
                            GLib.SettingsBindFlags.DEFAULT);
 
+            sidebar.notify["reveal-child"].connect (() => update_words ());
+
             var builder = new Gtk.Builder.from_resource ("/org/gtk/exampleapp/gears-menu.ui");
             var menu = builder.get_object ("menu") as GLib.MenuModel;
             gears.set_menu_model (menu);
