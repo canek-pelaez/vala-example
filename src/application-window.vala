@@ -53,8 +53,7 @@ namespace Example {
             lines.bind_property ("visible", lines_label, "visible",
                                  GLib.BindingFlags.DEFAULT);
 
-            Gtk.Settings.get_default ().gtk_shell_shows_app_menu = false;
-            show_menubar = true;
+            settings.changed["font"].connect (() => update_font ());
         }
 
         public void open (GLib.File file) {
@@ -191,6 +190,16 @@ namespace Example {
 
             string lns = "%d".printf (count);
             lines.set_text (lns);
+        }
+
+        private void update_font () {
+            var font_name = settings.get_string ("font");
+            foreach (var t in stack.get_children ()) {
+                var tab = t as Gtk.Bin;
+                var view = tab.get_child () as Gtk.TextView;
+                var font = Pango.FontDescription.from_string (font_name);
+                view.override_font (font);
+            }
         }
     }
 }
