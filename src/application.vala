@@ -26,6 +26,8 @@ namespace Example {
         }
 
         private void preferences () {
+            var prefs = new ApplicationPreferences (window);
+            prefs.present ();
         }
 
         public override void startup () {
