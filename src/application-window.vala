@@ -17,6 +17,10 @@ namespace Example {
         private Gtk.Revealer sidebar;
         [GtkChild]
         private Gtk.ListBox words;
+        [GtkChild]
+        private Gtk.Label lines_label;
+        [GtkChild]
+        private Gtk.Label lines;
 
         private GLib.Settings settings;
 
@@ -42,6 +46,12 @@ namespace Example {
 
             var action = settings.create_action ("show-words");
             add_action (action);
+
+            action = new GLib.PropertyAction ("show-lines", lines, "visible");
+            add_action (action);
+
+            lines.bind_property ("visible", lines_label, "visible",
+                                 GLib.BindingFlags.DEFAULT);
         }
 
         public void open (GLib.File file) {
@@ -76,6 +86,7 @@ namespace Example {
 
             search.sensitive = true;
             update_words ();
+            update_lines ();
         }
 
         [GtkCallback]
@@ -85,6 +96,7 @@ namespace Example {
 
             searchbar.set_search_mode (false);
             update_words ();
+            update_lines ();
         }
 
         [GtkCallback]
@@ -154,6 +166,28 @@ namespace Example {
                 row.show ();
                 words.add (row);
             }
+        }
+
+        public void update_lines () {
+            var tab = stack.get_visible_child () as Gtk.Bin;
+            if (tab == null)
+                return;
+
+            var view = tab.get_child () as Gtk.TextView;
+            var buffer = view.get_buffer ();
+
+            int count = 0;
+
+            Gtk.TextIter iter;
+            buffer.get_start_iter (out iter);
+            while (!iter.is_end ()) {
+                count++;
+                if (!iter.forward_line ())
+                    break;
+            }
+
+            string lns = "%d".printf (count);
+            lines.set_text (lns);
         }
     }
 }
