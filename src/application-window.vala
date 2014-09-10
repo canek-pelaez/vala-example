@@ -52,6 +52,9 @@ namespace Example {
 
             lines.bind_property ("visible", lines_label, "visible",
                                  GLib.BindingFlags.DEFAULT);
+
+            Gtk.Settings.get_default ().gtk_shell_shows_app_menu = false;
+            show_menubar = true;
         }
 
         public void open (GLib.File file) {
