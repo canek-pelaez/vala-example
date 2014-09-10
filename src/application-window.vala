@@ -6,11 +6,17 @@ namespace Example {
         [GtkChild]
         private Gtk.Stack stack;
         [GtkChild]
+        Gtk.MenuButton gears;
+        [GtkChild]
         private Gtk.ToggleButton search;
         [GtkChild]
         private Gtk.SearchBar searchbar;
         [GtkChild]
         private Gtk.SearchEntry searchentry;
+        [GtkChild]
+        private Gtk.Revealer sidebar;
+        [GtkChild]
+        private Gtk.ListBox words;
 
         private GLib.Settings settings;
 
@@ -24,6 +30,16 @@ namespace Example {
 
             search.bind_property ("active", searchbar, "search-mode-enabled",
                                   GLib.BindingFlags.BIDIRECTIONAL);
+
+            settings.bind ("show-words", sidebar, "reveal-child",
+                           GLib.SettingsBindFlags.DEFAULT);
+
+            var builder = new Gtk.Builder.from_resource ("/org/gtk/exampleapp/gears-menu.ui");
+            var menu = builder.get_object ("menu") as GLib.MenuModel;
+            gears.set_menu_model (menu);
+
+            var action = settings.create_action ("show-words");
+            add_action (action);
         }
 
         public void open (GLib.File file) {
@@ -57,10 +73,16 @@ namespace Example {
             }
 
             search.sensitive = true;
+            update_words ();
         }
 
         [GtkCallback]
         public void visible_child_changed () {
+            if (stack.in_destruction ())
+                return;
+
+            searchbar.set_search_mode (false);
+            update_words ();
         }
 
         [GtkCallback]
@@ -81,6 +103,54 @@ namespace Example {
                                       out match_start, out match_end, null)) {
                 buffer.select_range (match_start, match_end);
                 view.scroll_to_iter (match_start, 0.0, false, 0.0, 0.0);
+            }
+        }
+
+        private void find_word (Gtk.Button button) {
+            var word = button.get_label ();
+            searchentry.set_text (word);
+        }
+
+        private void update_words () {
+            var tab = stack.get_visible_child () as Gtk.Bin;
+            if (tab == null)
+                return;
+
+            var view = tab.get_child () as Gtk.TextView;
+            var buffer = view.get_buffer ();
+
+            var strings = new Gee.HashMap<string, string> ();
+
+            Gtk.TextIter start, end;
+            buffer.get_start_iter (out start);
+            while (!start.is_end ()) {
+                bool done = false;
+                while (!start.starts_word ()) {
+                    if (!start.forward_char ()) {
+                        done = true;
+                        break;
+                    }
+                }
+                if (done)
+                    break;
+                end = start;
+                if (!end.forward_word_end ())
+                    break;
+                var word = buffer.get_text (start, end, false);
+                var key = word.down ();
+                strings.set (key, key);
+                start = end;
+            }
+
+            var children = words.get_children ();
+            foreach (var child in children)
+                words.remove (child);
+
+            foreach (var key in strings.keys) {
+                var row = new Gtk.Button.with_label (key);
+                row.clicked.connect ((b) => find_word (b));
+                row.show ();
+                words.add (row);
             }
         }
     }
