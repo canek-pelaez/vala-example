@@ -38,6 +38,25 @@
                 <property name="pack-type">end</property>
               </packing>
             </child>
+            <child>
+              <object class="GtkMenuButton" id="gears">
+                <property name="visible">True</property>
+                <property name="use-popover">True</property>
+                <style>
+                  <class name="image-button"/>
+                </style>
+                <child>
+                  <object class="GtkImage" id="gears-icon">
+                    <property name="visible">True</property>
+                    <property name="icon-name">emblem-system-symbolic</property>
+                    <property name="icon-size">1</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="pack-type">end</property>
+              </packing>
+            </child>
           </object>
         </child>
         <child>
@@ -52,9 +71,33 @@
           </object>
         </child>
         <child>
-          <object class="GtkStack" id="stack">
-            <signal name="notify::visible-child" handler="visible_child_changed"/>
+          <object class="GtkBox" id="hbox">
             <property name="visible">True</property>
+            <child>
+              <object class="GtkRevealer" id="sidebar">
+                <property name="visible">True</property>
+                <property name="transition-type">slide-right</property>
+                <child>
+                  <object class="GtkScrolledWindow" id="sidebar-sw">
+                    <property name="visible">True</property>
+                    <property name="hscrollbar-policy">never</property>
+                    <property name="vscrollbar-policy">automatic</property>
+                    <child>
+                      <object class="GtkListBox" id="words">
+                        <property name="visible">True</property>
+                        <property name="selection-mode">none</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkStack" id="stack">
+                <signal name="notify::visible-child" handler="visible_child_changed"/>
+                <property name="visible">True</property>
+              </object>
+            </child>
           </object>
         </child>
       </object>
