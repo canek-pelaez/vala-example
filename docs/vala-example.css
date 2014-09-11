@@ -682,6 +682,10 @@ div.ui-expander > div.inner > div.hgroup > .subtitle {
   }
 }
 
+pre.syntax span.keyword, pre.syntax span.type, pre.syntax span.access, pre.syntax span.tag-name {
+    font-weight: bold;
+}
+
 span.code { 
     font-size: large;
     background-color: #ddd;
@@ -704,23 +708,23 @@ pre.syntax span.keyword {
     color: #4e9a06
 }
 
-span.type {
+pre.syntax span.type {
     color: #a55;
 }
 
-span.tag-name {
+pre.syntax span.tag-name {
     color: blue;
 }
 
-span.access {
+pre.syntax span.access {
     color: #bd6dff;
 }
 
-span.constant {
+pre.syntax span.constant {
     color: #005a00;
 }
 
-pre.syntax span.tag {
+pre.syntax pre.syntax span.tag {
   color: #729fcf;
 }
 
