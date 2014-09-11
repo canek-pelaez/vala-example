@@ -65,13 +65,54 @@ noinst_DATA =					\
 	$(resource_files)			\
 	$(NULL)
 
+docs_files =					\
+	docs/vala-example.css			\
+	docs/vala.xml				\
+	$(NULL)
+
+docs_js =					\
+	docs/jquery.js				\
+	docs/jquery.syntax.brush.csharp.js	\
+	docs/jquery.syntax.brush.css.js		\
+	docs/jquery.syntax.brush.html.js	\
+	docs/jquery.syntax.brush.javascript.js	\
+	docs/jquery.syntax.brush.php-script.js	\
+	docs/jquery.syntax.brush.ruby.js	\
+	docs/jquery.syntax.brush.xml.js		\
+	docs/jquery.syntax.core.js		\
+	docs/jquery.syntax.js			\
+	docs/jquery.syntax.layout.yelp.js	\
+	docs/yelp.js				\
+	$(NULL)
+
+docs_images =					\
+	docs/images/exampleapp1.png		\
+	docs/images/exampleapp2.png		\
+	docs/images/exampleapp3.png		\
+	docs/images/exampleapp4.png		\
+	docs/images/exampleapp5.png		\
+	docs/images/exampleapp6.png		\
+	docs/images/exampleapp7.png		\
+	docs/images/exampleapp8.png		\
+	docs/images/exampleapp9.png		\
+	$(NULL)
+
 EXTRA_DIST =					\
 	data/exampleapp.desktop.in		\
+	data/exampleapp.gresource.xml		\
+	docs/vala.xml				\
+	util/valadocize				\
+	$(resource_files)			\
+	$(schema_file)				\
 	$(data_icons_DATA)			\
+	$(docs_files)				\
+	$(docs_js)				\
+	$(docs_images)				\
 	$(NULL)
 
 DISTCLEANFILES =				\
-	$(data_desktop_DATA)
+	$(data_desktop_DATA)			\
+	$(NULL)
 
 if DOCS
 docs/index.page: docs/vala.xml
@@ -81,5 +122,9 @@ docs/index.html: docs/index.page
 	$(YELP_BUILD) html -o docs $< ;\
 	sed -i -e "s/C\.css/vala-example.css/g" $@
 
-CLEANFILES = docs/index.html docs/index.page docs/C.css
+CLEANFILES =					\
+	docs/index.html				\
+	docs/index.page				\
+	docs/C.css				\
+	$(NULL)
 endif
