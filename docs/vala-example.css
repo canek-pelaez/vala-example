@@ -716,6 +716,10 @@ span.access {
     color: #bd6dff;
 }
 
+span.constant {
+    color: #005a00;
+}
+
 pre.syntax span.tag {
   color: #729fcf;
 }
