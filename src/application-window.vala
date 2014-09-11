@@ -38,7 +38,7 @@ namespace Example {
             settings.bind ("show-words", sidebar, "reveal-child",
                            GLib.SettingsBindFlags.DEFAULT);
 
-            sidebar.notify["reveal-child"].connect (() => update_words ());
+            sidebar.notify["reveal-child"].connect (update_words);
 
             var builder = new Gtk.Builder.from_resource ("/org/gtk/exampleapp/gears-menu.ui");
             var menu = builder.get_object ("menu") as GLib.MenuModel;
@@ -53,7 +53,7 @@ namespace Example {
             lines.bind_property ("visible", lines_label, "visible",
                                  GLib.BindingFlags.DEFAULT);
 
-            settings.changed["font"].connect (() => update_font ());
+            settings.changed["font"].connect (update_font);
         }
 
         public void open (GLib.File file) {

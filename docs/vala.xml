@@ -451,11 +451,11 @@ namespace Example {
             base.startup ();
 
             var action = new GLib.SimpleAction ("preferences", null);
-            action.activate.connect (() => preferences ());
+            action.activate.connect (preferences);
             add_action (action);
 
             action = new GLib.SimpleAction ("quit", null);
-            action.activate.connect (() => quit ());
+            action.activate.connect (quit);
             add_action (action);
             add_accelerator ("<Ctrl>Q", "app.quit", null);
 
