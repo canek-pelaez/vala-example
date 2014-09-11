@@ -28,6 +28,14 @@ AC_SUBST(EXAMPLE_CFLAGS)
 AC_SUBST(EXAMPLE_LIBS)
 AC_SUBST(EXAMPLE_PACKAGES)
 
+AC_ARG_ENABLE([docs],
+        AS_HELP_STRING([--enable-docs], [Enable building documentation (default: no)]))
+        AS_IF([test "x$enable_docs" = "xyes"], [
+                    AC_PATH_PROG(YELP_BUILD, yelp-build)
+])
+
+AM_CONDITIONAL([DOCS], [test "x$YELP_BUILD" != "x"])
+
 AC_CONFIG_FILES([
 	Makefile
 ])

@@ -72,3 +72,14 @@ EXTRA_DIST =					\
 
 DISTCLEANFILES =				\
 	$(data_desktop_DATA)
+
+if DOCS
+docs/index.page: docs/vala.xml
+	$(top_srcdir)/util/valadocize $< $@
+
+docs/index.html: docs/index.page
+	$(YELP_BUILD) html -o docs $< ;\
+	sed -i -e "s/C\.css/vala-example.css/g" $@
+
+CLEANFILES = docs/index.html docs/index.page docs/C.css
+endif

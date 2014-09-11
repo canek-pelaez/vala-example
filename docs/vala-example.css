@@ -712,6 +712,10 @@ span.tag-name {
     color: blue;
 }
 
+span.access {
+    color: #bd6dff;
+}
+
 pre.syntax span.tag {
   color: #729fcf;
 }
