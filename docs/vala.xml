@@ -106,7 +106,7 @@ namespace Example {
     <listing>
       <title><file>application.vala</file></title>
       <code mime="text/x-csharp"><xi:include
-      href="https://raw.githubusercontent.com/canek-pelaez/vala-example/0a2eeb4c5efcd075aca4fc33d122ed17294857a8/src/application.vala"
+      href="https://raw.githubusercontent.com/canek-pelaez/vala-example/stage1/src/application.vala"
       parse="text"><xi:fallback><![CDATA[
 namespace Example {
 
@@ -146,7 +146,7 @@ namespace Example {
     <listing>
       <title><file>application-window.vala</file></title>
       <code mime="text/x-csharp"><xi:include
-      href="https://raw.githubusercontent.com/canek-pelaez/vala-example/0a2eeb4c5efcd075aca4fc33d122ed17294857a8/src/application-window.vala"
+      href="https://raw.githubusercontent.com/canek-pelaez/vala-example/stage1/src/application-window.vala"
       parse="text"><xi:fallback><![CDATA[
 namespace Example {
 
@@ -216,7 +216,7 @@ Exec=@bindir@/exampleapp
     <listing>
       <title><file>window.ui</file></title>
       <code mime="application/xml"><xi:include
-      href="https://raw.githubusercontent.com/canek-pelaez/vala-example/fce6067f9d5c16757783e48ac19ed8c7b0b8a6fe/data/window.ui"
+      href="https://raw.githubusercontent.com/canek-pelaez/vala-example/stage2/data/window.ui"
       parse="text"><xi:fallback><![CDATA[
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
@@ -265,7 +265,7 @@ Exec=@bindir@/exampleapp
     <listing>
       <title><file>application-window.vala</file></title>
       <code mime="text/x-csharp"><xi:include
-      href="https://raw.githubusercontent.com/canek-pelaez/vala-example/fce6067f9d5c16757783e48ac19ed8c7b0b8a6fe/src/application-window.vala"
+      href="https://raw.githubusercontent.com/canek-pelaez/vala-example/stage2/src/application-window.vala"
       parse="text"><xi:fallback><![CDATA[
 namespace Example {
 
@@ -290,7 +290,7 @@ namespace Example {
     <listing>
       <title><file>exampleapp.gresource.xml</file></title>
       <code mime="application/xml"><xi:include
-      href="https://raw.githubusercontent.com/canek-pelaez/vala-example/fce6067f9d5c16757783e48ac19ed8c7b0b8a6fe/data/exampleapp.gresource.xml"
+      href="https://raw.githubusercontent.com/canek-pelaez/vala-example/stage2/data/exampleapp.gresource.xml"
       parse="text"><xi:fallback><![CDATA[
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
@@ -381,7 +381,7 @@ namespace Example {
         ...]]></code>
     </listing>
 
-    <p>(<link href="https://raw.githubusercontent.com/canek-pelaez/vala-example/fe4fd6ee781faa7691b6211d157d6460ecfc8160/src/application-window.vala">full source</link>)</p>
+    <p>(<link href="https://raw.githubusercontent.com/canek-pelaez/vala-example/stage3/src/application-window.vala">full source</link>)</p>
 
     <p>Note that we did not have to touch the stack switcher at
     all. It gets all its information from the stack that it belongs
@@ -409,7 +409,7 @@ namespace Example {
     <listing>
       <title><file>app-menu.ui</file></title>
       <code mime="application/xml"><xi:include
-      href="https://raw.githubusercontent.com/canek-pelaez/vala-example/b7df3a98c18c00b3e7d5ec094739d405fdf0161a/data/app-menu.ui"
+      href="https://raw.githubusercontent.com/canek-pelaez/vala-example/stage4/data/app-menu.ui"
       parse="text"><xi:fallback><![CDATA[
 <?xml version="1.0"?>
 <interface>
@@ -466,7 +466,7 @@ namespace Example {
         }
         ...]]></code>
     </listing>
-    <p>(<link href="https://raw.githubusercontent.com/canek-pelaez/vala-example/b7df3a98c18c00b3e7d5ec094739d405fdf0161a/src/application.vala">full source</link>)</p>
+    <p>(<link href="https://raw.githubusercontent.com/canek-pelaez/vala-example/stage4/src/application.vala">full source</link>)</p>
 
     <p>Our preferences menu item does not do anything yet, but the
     Quit menu item is fully functional (the <code>quit()</code>
@@ -496,7 +496,7 @@ namespace Example {
       <listing>
         <title><file>org.gtk.exampleapp.gschema.xml</file></title>
         <code mime="application/xml"><xi:include
-        href="https://raw.githubusercontent.com/canek-pelaez/vala-example/c91409d0517adb5f4562665481a306ec39ab11cc/data/org.gtk.exampleapp.gschema.xml"
+        href="https://raw.githubusercontent.com/canek-pelaez/vala-example/stage5/data/org.gtk.exampleapp.gschema.xml"
         parse="text"><xi:fallback><![CDATA[
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
@@ -549,7 +549,7 @@ namespace Example {
         }
         ...]]></code>
       </listing>
-      <p>(<link href="https://raw.githubusercontent.com/canek-pelaez/vala-example/c91409d0517adb5f4562665481a306ec39ab11cc/src/application-window.vala">full source</link>)</p>
+      <p>(<link href="https://raw.githubusercontent.com/canek-pelaez/vala-example/stage5/src/application-window.vala">full source</link>)</p>
 
       <p>The code to connect the font setting is a little more
       involved, since there is no simple object property that it
@@ -647,7 +647,7 @@ namespace Example {
       <listing>
         <title><file>application-preferences.vala</file></title>
         <code mime="text/x-csharp"><xi:include
-        href="https://raw.githubusercontent.com/canek-pelaez/vala-example/c91409d0517adb5f4562665481a306ec39ab11cc/src/application-preferences.vala"
+        href="https://raw.githubusercontent.com/canek-pelaez/vala-example/stage5/src/application-preferences.vala"
         parse="text"><xi:fallback><![CDATA[
 namespace Example {
 
@@ -690,7 +690,7 @@ namespace Example {
         }
         ...]]></code>
       </listing>
-      <p>(<link href="https://raw.githubusercontent.com/canek-pelaez/vala-example/c91409d0517adb5f4562665481a306ec39ab11cc/src/application.vala">full source</link>)</p>
+      <p>(<link href="https://raw.githubusercontent.com/canek-pelaez/vala-example/stage5/src/application.vala">full source</link>)</p>
 
       <p>After all this work, our application can now show a
       preference dialog like this:</p>
@@ -715,7 +715,7 @@ namespace Example {
       <listing>
         <title><file>window.ui</file></title>
         <code mime="application/xml"><xi:include
-        href="https://raw.githubusercontent.com/canek-pelaez/vala-example/9a623e778a634b84a595a0bf8b293a1d3397afce/data/window.ui"
+        href="https://raw.githubusercontent.com/canek-pelaez/vala-example/stage6/data/window.ui"
         parse="text"><xi:fallback><![CDATA[
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
@@ -813,7 +813,7 @@ namespace Example {
         }
         ...]]></code>
       </listing>
-      <p>(<link href="https://raw.githubusercontent.com/canek-pelaez/vala-example/9a623e778a634b84a595a0bf8b293a1d3397afce/src/application-window.vala">full source</link>)</p>
+      <p>(<link href="https://raw.githubusercontent.com/canek-pelaez/vala-example/stage6/src/application-window.vala">full source</link>)</p>
 
       <p>With the search bar, our application now looks like this:</p>
 
@@ -833,7 +833,7 @@ namespace Example {
       <listing>
         <title><file>window.ui</file></title>
         <code mime="application/xml"><xi:include
-        href="https://raw.githubusercontent.com/canek-pelaez/vala-example/0bdfb7477f73a30984be47de1184d2733393eda0/data/window.ui"
+        href="https://raw.githubusercontent.com/canek-pelaez/vala-example/stage7/data/window.ui"
         parse="text"><xi:fallback><![CDATA[
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
@@ -953,7 +953,7 @@ namespace Example {
       <listing>
         <title><file>gears-menu.ui</file></title>
         <code mime="application/xml"><xi:include
-        href="https://raw.githubusercontent.com/canek-pelaez/vala-example/0bdfb7477f73a30984be47de1184d2733393eda0/data/gears-menu.ui"
+        href="https://raw.githubusercontent.com/canek-pelaez/vala-example/stage7/data/gears-menu.ui"
         parse="text"><xi:fallback><![CDATA[
 <?xml version="1.0"?>
 <interface>
@@ -989,7 +989,7 @@ namespace Example {
         }
         ...]]></code>
       </listing>
-      <p>(<link href="https://raw.githubusercontent.com/canek-pelaez/vala-example/0bdfb7477f73a30984be47de1184d2733393eda0/src/application-window.vala">full source</link>)</p>
+      <p>(<link href="https://raw.githubusercontent.com/canek-pelaez/vala-example/stage7/src/application-window.vala">full source</link>)</p>
 
       <p>What our application looks like now:</p>
 
@@ -1069,13 +1069,13 @@ namespace Example {
 
         ...]]></code>
       </listing>
-      <p>(<link href="https://raw.githubusercontent.com/canek-pelaez/vala-example/37b957ad3b9ba645553d58ef9b8f3255186e8d6a/src/application-window.vala">full source</link>)</p>
+      <p>(<link href="https://raw.githubusercontent.com/canek-pelaez/vala-example/stage8/src/application-window.vala">full source</link>)</p>
 
 
       <p>We also need a function that counts the lines of the
       currently active tab, and updates the <code>lines</code>
       label. See the <link
-      href="https://raw.githubusercontent.com/canek-pelaez/vala-example/37b957ad3b9ba645553d58ef9b8f3255186e8d6a/src/application-window.vala">full
+      href="https://raw.githubusercontent.com/canek-pelaez/vala-example/stage8/src/application-window.vala">full
       source</link> if you are interested in the details.</p>
 
       <p>This brings our example application to this appearance:</p>
